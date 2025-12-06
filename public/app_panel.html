@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LessEnergy - Panel de Control</title>
+    <link rel="stylesheet" href="assets/styles/panel.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-bolt"></i>
+                LessEnergy
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li class="nav-link active" data-page="page-dashboard"><i class="fas fa-th-large"></i> Dashboard</li>
+                    <li class="nav-link" data-page="page-dispositivos"><i class="fas fa-plug"></i> Dispositivos</li>
+                    <li class="nav-link" data-page="page-alertas"><i class="fas fa-bell"></i> Alertas <span class="badge">3</span></li>
+                    <li class="nav-link" data-page="page-reportes"><i class="fas fa-file-alt"></i> Reportes</li>
+                    <li class="nav-link" data-page="page-recomendaciones"><i class="fas fa-lightbulb"></i> Recomendaciones</li>
+                    <li class="nav-link" data-page="page-asistente"><i class="fas fa-brain"></i> Asistente IA</li>
+                    <li class="nav-link" data-page="page-parental"><i class="fas fa-user-shield"></i> Control Parental</li>
+                    <li class="nav-link" data-page="page-privacidad"><i class="fas fa-lock"></i> Privacidad</li>
+                    <li class="logout-item" onclick="window.location.href='index.html'">
+                        <i class="fas fa-sign-out-alt"></i> Salir
+                    </li>
+                </ul>
+            </nav>
+            <div class="premium-plan">
+                <i class="fas fa-star"></i>
+                <p>Plan Premium</p>
+                <small>Accede a funciones avanzadas y análisis predictivo</small>
+                <button class="upgrade-btn">Actualizar Plan</button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            
+            <header class="top-header">
+                <h2>Panel de Control</h2>
+                <div class="system-status">
+                    <span class="status-dot"></span>
+                    Sistema Activo
+                </div>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar dispositivos...">
+                </div>
+                <div class="icons">
+                    <i class="fas fa-bell"></i>
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <div class="user-info">
+    <div class="avatar">
+        <i class="fas fa-user"></i> </div>
+    <div class="details">
+        <p class="name">Carlos Méndez</p>
+        <p class="role">Admin Principal</p>
+    </div>
+</div>
+            </header>
+
+            <div id="page-dashboard">
+                <section class="real-time-consumption">
+                    <div class="header-rt">
+                        <h3>Consumo en Tiempo Real</h3>
+                        <p>Monitoreo actualizado cada 5 segundos</p>
+                    </div>
+                    <p class="last-update">Última actualización <span>15:42:35</span></p>
+
+                    <div class="kpi-cards">
+                        <div class="card current-power">
+                            <i class="fas fa-bolt"></i>
+                            <p class="label">Actual</p>
+                            <p class="value">3.42</p>
+                            <p class="unit">kW en uso</p>
+                            <p class="trend up"><i class="fas fa-caret-up"></i> +12% vs ayer</p>
+                        </div>
+                        <div class="card daily-consumption">
+                            <i class="fas fa-calendar-alt"></i>
+                            <p class="label">Hoy</p>
+                            <p class="value">28.5</p>
+                            <p class="unit">kWh consumidos</p>
+                            <p class="trend down"><i class="fas fa-caret-down"></i> -8% vs promedio</p>
+                        </div>
+                        <div class="card estimated-cost">
+                            <i class="fas fa-dollar-sign"></i>
+                            <p class="label">Mes</p>
+                            <p class="value">S/320</p>
+                            <p class="unit">Costo estimado</p>
+                            <p class="projection"><i class="fas fa-chart-bar"></i> Proyección: S/400</p>
+                        </div>
+                        <div class="card co2-savings">
+                            <i class="fas fa-leaf"></i>
+                            <p class="label">CO₂</p>
+                            <p class="value">12.4</p>
+                            <p class="unit">kg CO₂ ahorrados</p>
+                            <p class="equivalent">= 2 árboles</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="hourly-consumption-chart">
+                    <div class="chart-header">
+                        <h4>Consumo por Hora - Hoy</h4>
+                        <p>Distribución del consumo energético en las últimas 24 horas</p>
+                        <div class="chart-tabs">
+                            <button class="tab active">Hora</button>
+                            <button class="tab">Día</button>
+                            <button class="tab">Semana</button>
+                        </div>
+                    </div>
+                    <div class="chart-area">
+                        <div class="bar-chart-simulation">
+                            <div class="y-axis">
+                                <span>4</span>
+                                <span>3.5</span>
+                                <span>3</span>
+                                <span>2.5</span>
+                                <span>2</span>
+                                <span>1.5</span>
+                                <span>1</span>
+                                <span>0.5</span>
+                                <span>0</span>
+                            </div>
+
+                            <div class="chart-grid-and-bars">
+                                <div class="chart-grid">
+                                    <div class="chart-grid-line"></div>
+                                    <div class="chart-grid-line"></div>
+                                    <div class="chart-grid-line"></div>
+                                    <div class="chart-grid-line"></div>
+                                    <div class="chart-grid-line"></div>
+                                    <div class="chart-grid-line"></div>
+                                    <div class="chart-grid-line"></div>
+                                    <div class="chart-grid-line"></div>
+                                    <div class="chart-grid-line"></div>
+                                </div>
+
+                                <div class="bars">
+                                    <div class="bar" style="height: 15%;"></div>
+                                    <div class="bar" style="height: 5%;"></div>
+                                    <div class="bar" style="height: 5%;"></div>
+                                    <div class="bar" style="height: 15%;"></div>
+                                    <div class="bar" style="height: 35%;"></div>
+                                    <div class="bar" style="height: 45%;"></div>
+                                    <div class="bar" style="height: 50%;"></div>
+                                    <div class="bar" style="height: 55%;"></div>
+                                    <div class="bar" style="height: 60%;"></div>
+                                    <div class="bar" style="height: 80%;"></div>
+                                    <div class="bar max-bar" style="height: 100%;"></div>
+                                    <div class="bar" style="height: 90%;"></div>
+                                    <div class="bar" style="height: 55%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="x-axis-labels">
+                            <span>00:00</span>
+                            <span>02:00</span>
+                            <span>04:00</span>
+                            <span>06:00</span>
+                            <span>08:00</span>
+                            <span>10:00</span>
+                            <span>12:00</span>
+                            <span>14:00</span>
+                            <span>16:00</span>
+                            <span>18:00</span>
+                            <span>20:00</span>
+                            <span>22:00</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div id="page-dispositivos" class="devices-page-content hidden-page">
+
+                <div class="automation-section">
+    
+    <div class="automation-header">
+        <h2>Programación de Apagado Automático</h2>
+        <p>Configura horarios para apagar dispositivos automáticamente</p>
+        <button class="btn-new-program">
+            <i class="fas fa-plus"></i> Nueva Programación
+        </button>
+    </div>
+
+    <div class="program-card active-program">
+        <div class="program-icon icon-blue-bg">
+            <i class="fas fa-moon"></i>
+        </div>
+        <div class="program-details">
+            <h3 class="program-title">Apagado Nocturno - Sala</h3>
+            <p class="program-devices">TV, Luces, Aire Acondicionado</p>
+            <div class="program-meta">
+                <span class="meta-item"><i class="fas fa-calendar-alt"></i> Lunes a Viernes</span>
+                <span class="meta-item"><i class="fas fa-bell"></i> Notificación 5 min antes</span>
+            </div>
+        </div>
+        <div class="program-time">
+            23:00 hrs
+        </div>
+        <div class="switch-container">
+            <label class="switch-toggle">
+                <input type="checkbox" checked>
+                <span class="slider-toggle"></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="program-card active-program">
+        <div class="program-icon icon-green-bg">
+            <i class="fas fa-cog"></i>
+        </div>
+        <div class="program-details">
+            <h3 class="program-title">Ahorro Diurno - Dormitorios</h3>
+            <p class="program-devices">Luces, Ventiladores</p>
+            <div class="program-meta">
+                <span class="meta-item"><i class="fas fa-calendar-alt"></i> Todos los días</span>
+                <span class="meta-item"><i class="fas fa-bell-slash"></i> Sin notificación</span>
+            </div>
+        </div>
+        <div class="program-time">
+            08:00 hrs
+        </div>
+        <div class="switch-container">
+            <label class="switch-toggle">
+                <input type="checkbox" checked>
+                <span class="slider-toggle"></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="program-card inactive-program">
+        <div class="program-icon icon-gray-bg">
+            <i class="fas fa-power-off"></i>
+        </div>
+        <div class="program-details">
+            <h3 class="program-title">Apagado Fin de Semana</h3>
+            <p class="program-devices">Oficina - Todos los dispositivos</p>
+            <div class="program-meta">
+                <span class="meta-item"><i class="fas fa-calendar-alt"></i> Sábado y Domingo</span>
+                <span class="meta-item tag-inactive">INACTIVO</span>
+            </div>
+        </div>
+        <div class="program-time">
+            18:00 hrs
+        </div>
+        <div class="switch-container">
+            <label class="switch-toggle">
+                <input type="checkbox">
+                <span class="slider-toggle"></span>
+            </label>
+        </div>
+    </div>
+
+</div>                
+                <div class="devices-header">
+                    <h2>Dispositivos Conectados</h2>
+                    <p>24 dispositivos activos en tu red</p>
+                    <button class="btn-add-device">
+                        <i class="fas fa-plus"></i> Agregar Dispositivo
+                    </button>
+                </div>
+
+                <div class="devices-grid">
+                    
+                    <div class="device-card high-alert">
+                        <div class="device-info">
+                            <i class="fas fa-temperature-low icon-red"></i>
+                            <div class="text-group">
+                                <p class="name">Aire Acondicionado</p>
+                                <small class="zone">Sala Principal</small>
+                            </div>
+                        </div>
+                        <span class="status-tag tag-red">ALERTA ALTA</span>
+                        
+                        <div class="consumption-data">
+                            <p class="label">Consumo actual</p>
+                            <p class="value">2.8 <span class="unit">kW</span></p>
+                        </div>
+
+                        <div class="usage-bar">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 85%;"></div>
+                            </div>
+                            <div class="limit-info">
+                                <small>85% del límite</small>
+                                <small>3.3 kW máx</small>
+                            </div>
+                        </div>
+                        
+                        <div class="actions">
+                            <button class="btn-details"><i class="fas fa-info-circle"></i> Detalles</button>
+                            <button class="btn-action btn-red"><i class="fas fa-power-off"></i> Apagar</button>
+                        </div>
+                    </div>
+
+                    <div class="device-card media-use">
+                        <div class="device-info">
+                            <i class="fas fa-tv icon-yellow"></i>
+                            <div class="text-group">
+                                <p class="name">Smart TV 55"</p>
+                                <small class="zone">Dormitorio Principal</small>
+                            </div>
+                        </div>
+                        <span class="status-tag tag-yellow">MEDIA</span>
+                        
+                        <div class="consumption-data">
+                            <p class="label">Consumo actual</p>
+                            <p class="value">0.18 <span class="unit">kW</span></p>
+                        </div>
+
+                        <div class="usage-bar">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 45%;"></div>
+                            </div>
+                            <div class="limit-info">
+                                <small>45% del límite</small>
+                                <small>0.4 kW máx</small>
+                            </div>
+                        </div>
+                        
+                        <div class="actions">
+                            <button class="btn-details"><i class="fas fa-info-circle"></i> Detalles</button>
+                            <button class="btn-action btn-yellow-action"><i class="fas fa-power-off"></i> Apagar</button>
+                        </div>
+                    </div>
+
+                    <div class="device-card normal-use">
+                        <div class="device-info">
+                            <i class="fas fa-lightbulb icon-green"></i>
+                            <div class="text-group">
+                                <p class="name">Luces LED</p>
+                                <small class="zone">Cocina</small>
+                            </div>
+                        </div>
+                        <span class="status-tag tag-green">NORMAL</span>
+                        
+                        <div class="consumption-data">
+                            <p class="label">Consumo actual</p>
+                            <p class="value">0.024 <span class="unit">kW</span></p>
+                        </div>
+
+                        <div class="usage-bar">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 15%;"></div>
+                            </div>
+                            <div class="limit-info">
+                                <small>15% del límite</small>
+                                <small>0.16 kW máx</small>
+                            </div>
+                        </div>
+                        
+                        <div class="actions">
+                            <button class="btn-details"><i class="fas fa-info-circle"></i> Detalles</button>
+                            <button class="btn-action btn-green-action"><i class="fas fa-power-off"></i> Apagar</button>
+                        </div>
+                    </div>
+                    
+                    <div class="device-card normal-use">
+                        <div class="device-info">
+                            <i class="fas fa-snowflake icon-green"></i>
+                            <div class="text-group">
+                                <p class="name">Refrigerador</p>
+                                <small class="zone">Cocina</small>
+                            </div>
+                        </div>
+                        <span class="status-tag tag-green">NORMAL</span>
+                        
+                        <div class="consumption-data">
+                            <p class="label">Consumo actual</p>
+                            <p class="value">0.15 <span class="unit">kW</span></p>
+                        </div>
+
+                        <div class="usage-bar">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 25%;"></div>
+                            </div>
+                            <div class="limit-info">
+                                <small>25% del límite</small>
+                                <small>0.6 kW máx</small>
+                            </div>
+                        </div>
+                        
+                        <div class="actions">
+                            <button class="btn-details"><i class="fas fa-info-circle"></i> Detalles</button>
+                            <button class="btn-blocked"><i class="fas fa-lock"></i> Bloqueado</button>
+                        </div>
+                    </div>
+
+                    <div class="device-card media-use">
+                        <div class="device-info">
+                            <i class="fas fa-laptop icon-yellow"></i>
+                            <div class="text-group">
+                                <p class="name">Computadora</p>
+                                <small class="zone">Oficina</small>
+                            </div>
+                        </div>
+                        <span class="status-tag tag-yellow">MEDIA</span>
+                        
+                        <div class="consumption-data">
+                            <p class="label">Consumo actual</p>
+                            <p class="value">0.32 <span class="unit">kW</span></p>
+                        </div>
+
+                        <div class="usage-bar">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 53%;"></div>
+                            </div>
+                            <div class="limit-info">
+                                <small>53% del límite</small>
+                                <small>0.6 kW máx</small>
+                            </div>
+                        </div>
+                        
+                        <div class="actions">
+                            <button class="btn-details"><i class="fas fa-info-circle"></i> Detalles</button>
+                            <button class="btn-action btn-yellow-action"><i class="fas fa-power-off"></i> Apagar</button>
+                        </div>
+                    </div>
+
+                    <div class="device-card high-alert">
+                        <div class="device-info">
+                            <i class="fas fa-fire icon-red"></i>
+                            <div class="text-group">
+                                <p class="name">Horno Eléctrico</p>
+                                <small class="zone">Cocina</small>
+                            </div>
+                        </div>
+                        <span class="status-tag tag-red">ALERTA ALTA</span>
+                        
+                        <div class="consumption-data">
+                            <p class="label">Consumo actual</p>
+                            <p class="value">2.2 <span class="unit">kW</span></p>
+                        </div>
+
+                        <div class="usage-bar">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 88%;"></div>
+                            </div>
+                            <div class="limit-info">
+                                <small>88% del límite</small>
+                                <small>2.5 kW máx</small>
+                            </div>
+                        </div>
+                        
+                        <div class="actions">
+                            <button class="btn-details"><i class="fas fa-info-circle"></i> Detalles</button>
+                            <button class="btn-action btn-red"><i class="fas fa-power-off"></i> Apagar</button>
+                        </div>
+                    </div>
+
+                </div> <div class="auto-detection-section">
+                    <div class="auto-detection-header">
+                        <h3>Detección Automática de Dispositivos</h3>
+                        <p>Nuevos dispositivos encontrados en tu red</p>
+                        <button class="btn-scan">
+                            <i class="fas fa-sync-alt"></i> Escanear Red
+                        </button>
+                    </div>
+
+                    <div class="new-devices-container">
+                        <div class="new-device-card">
+                            <div class="device-icon-new">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <div class="device-details-new">
+                                <p class="name">PlayStation 5</p>
+                                <small class="status">Dispositivo detectado</small>
+                                <small class="ip">192.168.1.145</small>
+                            </div>
+                            <span class="tag-new">Nuevo</span>
+
+                            <div class="add-device-actions">
+                                <div class="zone-select-group">
+                                    <select>
+                                        <option>Seleccionar zona</option>
+                                    </select>
+                                </div>
+                                <button class="btn-add-small">
+                                    <i class="fas fa-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="new-device-card">
+                            <div class="device-icon-new">
+                                <i class="fas fa-question-circle"></i>
+                            </div>
+                            <div class="device-details-new">
+                                <p class="name">Microondas Smart</p>
+                                <small class="status">Dispositivo detectado</small>
+                                <small class="ip">192.168.1.178</small>
+                            </div>
+                            <span class="tag-new">Nuevo</span>
+
+                            <div class="add-device-actions">
+                                <div class="zone-select-group">
+                                    <select>
+                                        <option>Seleccionar zona</option>
+                                    </select>
+                                </div>
+                                <button class="btn-add-small">
+                                    <i class="fas fa-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </div>
+            <div id="page-consumo" class="hidden-page"></div>
+            <div id="page-alertas" class="hidden-page page-alerts-content">
+
+    <div class="alerts-main-header">
+        <i class="fas fa-bell icon-red-alert"></i>
+        <div>
+            <h2>Alertas y Notificaciones</h2>
+            <p>Gestiona y actúa sobre los eventos importantes de tu red (3 alertas críticas)</p>
+        </div>
+        <button class="btn-clear-alerts">
+            <i class="fas fa-check-double"></i> Marcar Todo como Leído
+        </button>
+    </div>
+
+    <div class="alerts-grid">
+
+        <div class="alert-card alert-high">
+            <div class="alert-icon icon-high">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="alert-details">
+                <h3 class="alert-title">Consumo Anómalo Nocturno</h3>
+                <p class="alert-message">Detectado un pico de consumo inusual (1.5 kW) entre 02:00 y 04:00 AM, fuera de las reglas de automatización.</p>
+                <span class="alert-timestamp">Hace 1 hora</span>
+            </div>
+            <div class="alert-actions">
+                <button class="btn-action-primary">Ver Reporte</button>
+                <button class="btn-action-secondary">Silenciar 24h</button>
+            </div>
+        </div>
+
+        <div class="alert-card alert-medium">
+            <div class="alert-icon icon-medium">
+                <i class="fas fa-child"></i>
+            </div>
+            <div class="alert-details">
+                <h3 class="alert-title">Límite de Tiempo Alcanzado - Consola</h3>
+                <p class="alert-message">El tiempo de uso permitido (3h) para la Consola en la Zona de Juegos ha expirado. Dispositivo apagado.</p>
+                <span class="alert-timestamp">Hace 4 horas</span>
+            </div>
+            <div class="alert-actions">
+                <button class="btn-action-primary">Extender Tiempo</button>
+                <button class="btn-action-secondary">Marcar Leído</button>
+            </div>
+        </div>
+
+        <div class="alert-card alert-low">
+            <div class="alert-icon icon-low">
+                <i class="fas fa-cog"></i>
+            </div>
+            <div class="alert-details">
+                <h3 class="alert-title">Configuración Guardada</h3>
+                <p class="alert-message">La regla de "Ahorro Diurno - Dormitorios" fue actualizada y guardada correctamente a las 18:00 hrs.</p>
+                <span class="alert-timestamp">Ayer</span>
+            </div>
+            <div class="alert-actions">
+                <button class="btn-action-primary">Ver Detalles</button>
+                <button class="btn-action-secondary">Archivar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+            <div id="page-automatizacion" class="hidden-page"></div>
+            <div id="page-reportes" class="hidden-page page-reports-content">
+
+    <div class="reports-header">
+        <h2>Reportes de Consumo</h2>
+        <p>Análisis detallado de tu consumo energético</p>
+        <div class="report-controls">
+            <button class="report-tab active">Diario</button>
+            <button class="report-tab">Semanal</button>
+            <button class="report-tab">Mensual</button>
+            <button class="btn-export"><i class="fas fa-file-export"></i> Exportar</button>
+        </div>
+    </div>
+    
+    <div class="reports-top-charts">
+        
+        <div class="chart-card chart-area-consumption">
+            <h3 class="chart-title">Consumo por Hora - Últimas 24h</h3>
+                        <div class="chart-simulation-area-consumption">
+                <div class="area-chart-labels-y">
+                    <span>4</span>
+                    <span>3</span>
+                    <span>2</span>
+                    <span>1</span>
+                    <span>0</span>
+                </div>
+                <div class="area-chart-labels-x">
+                    <span>00:00</span>
+                    <span>04:00</span>
+                    <span>08:00</span>
+                    <span>12:00</span>
+                    <span>16:00</span>
+                    <span>20:00</span>
+                    <span>23:59</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="chart-card chart-pie-distribution">
+            <h3 class="chart-title">Distribución por Zona</h3>
+                        <div class="chart-simulation-pie">
+                <div class="pie-chart-placeholder">
+                    <div class="slice slice-blue"></div>
+                    <div class="slice slice-purple"></div>
+                    <div class="slice slice-orange"></div>
+                    <div class="slice slice-green"></div>
+                </div>
+                <div class="pie-legend">
+                    <div><span class="dot dot-blue"></span> Sala (35%)</div>
+                    <div><span class="dot dot-purple"></span> Cocina (5%)</div>
+                    <div><span class="dot dot-orange"></span> Dormitorios (20%)</div>
+                    <div><span class="dot dot-green"></span> Oficina (28%)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="reports-bottom-charts">
+        <div class="chart-card chart-bar-comparative">
+            <h3 class="chart-title">Comparativa Semanal</h3>
+            <div class="chart-simulation-bar-comparative">
+                <div class="bar-y-axis">
+                    <span>40</span>
+                    <span>30</span>
+                    <span>20</span>
+                    <span>10</span>
+                    <span>0</span>
+                </div>
+                <div class="bar-comparative-container">
+                    <div class="bar-group" data-label="Lun">
+                        <div class="bar-comp bar-current" style="height: 60%;"></div>
+                        <div class="bar-comp bar-previous" style="height: 70%;"></div>
+                    </div>
+                    <div class="bar-group" data-label="Mar">
+                        <div class="bar-comp bar-current" style="height: 55%;"></div>
+                        <div class="bar-comp bar-previous" style="height: 65%;"></div>
+                    </div>
+                    <div class="bar-group" data-label="Mié">
+                        <div class="bar-comp bar-current" style="height: 65%;"></div>
+                        <div class="bar-comp bar-previous" style="height: 75%;"></div>
+                    </div>
+                    <div class="bar-group" data-label="Jue">
+                        <div class="bar-comp bar-current" style="height: 60%;"></div>
+                        <div class="bar-comp bar-previous" style="height: 70%;"></div>
+                    </div>
+                    <div class="bar-group" data-label="Vie">
+                        <div class="bar-comp bar-current" style="height: 75%;"></div>
+                        <div class="bar-comp bar-previous" style="height: 85%;"></div>
+                    </div>
+                    <div class="bar-group" data-label="Sáb">
+                        <div class="bar-comp bar-current" style="height: 70%;"></div>
+                        <div class="bar-comp bar-previous" style="height: 90%;"></div>
+                    </div>
+                    <div class="bar-group" data-label="Dom">
+                        <div class="bar-comp bar-current" style="height: 60%;"></div>
+                        <div class="bar-comp bar-previous" style="height: 75%;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="comparative-legend">
+                <span class="legend-item"><span class="legend-dot dot-blue"></span> Semana Actual</span>
+                <span class="legend-item"><span class="legend-dot dot-gray"></span> Semana Anterior</span>
+            </div>
+        </div>
+    </div>
+</div>
+            <div id="page-recomendaciones" class="hidden-page page-recommendations-content">
+
+    <div class="recommendations-header">
+        <div class="header-icon-container">
+            <i class="fas fa-chart-line"></i>
+        </div>
+        <div>
+            <h2>Recomendaciones Personalizadas</h2>
+            <p>Basadas en tu patrón de consumo</p>
+        </div>
+    </div>
+    
+    <div class="recommendation-grid">
+        
+        <div class="recommendation-card card-green">
+            <div class="card-header">
+                <div class="card-icon-bg icon-green-light">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <span class="tag tag-high-savings">Ahorro Alto</span>
+            </div>
+            <h3 class="card-title">Optimizar Aire Acondicionado</h3>
+            <p class="card-description">Reduce la temperatura 2°C durante las horas de menor uso. Ahorro estimado: S/171 mes</p>
+            <div class="card-footer">
+                <p class="implementation-level">Implementación: Fácil</p>
+                <a href="#" class="btn-details">Ver detalles <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="recommendation-card card-blue">
+            <div class="card-header">
+                <div class="card-icon-bg icon-blue-light">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <span class="tag tag-medium-savings">Ahorro Medio</span>
+            </div>
+            <h3 class="card-title">Programar Lavadora</h3>
+            <p class="card-description">Usa la lavadora en horario valle (22:00-08:00). Ahorro estimado: S/106.4 mes</p>
+            <div class="card-footer">
+                <p class="implementation-level">Implementación: Media</p>
+                <a href="#" class="btn-details">Ver detalles <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="recommendation-card card-yellow">
+            <div class="card-header">
+                <div class="card-icon-bg icon-yellow-light">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <span class="tag tag-low-savings">Ahorro Bajo</span>
+            </div>
+            <h3 class="card-title">Cambiar a LED</h3>
+            <p class="card-description">Reemplaza 8 focos tradicionales por LED. Ahorro estimado: S/57 mes</p>
+            <div class="card-footer">
+                <p class="implementation-level">Implementación: Fácil</p>
+                <a href="#" class="btn-details">Ver detalles <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <div class="recommendation-card card-purple">
+            <div class="card-header">
+                <div class="card-icon-bg icon-purple-light">
+                    <i class="fas fa-flask"></i>
+                </div>
+                <div class="tag-group">
+                    <span class="tag tag-new">Nuevo</span>
+                </div>
+            </div>
+            <h3 class="card-title">Mantener Refrigerador</h3>
+            <p class="card-description">Limpia las bobinas del refrigerador cada 6 meses. Ahorro estimado: S/45.6 mes</p>
+            <div class="card-footer">
+                <p class="implementation-level">Implementación: Fácil</p>
+                <a href="#" class="btn-details">Ver detalles <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="total-savings-summary">
+        <div class="savings-text">
+            <i class="fas fa-chart-line"></i>
+            <span>Ahorro Total Potencial</span>
+            <p>Aplicando todas las recomendaciones</p>
+        </div>
+        <div class="savings-amount">
+            <span class="amount">S/200</span>
+            <span class="period">por mes</span>
+        </div>
+    </div>
+</div>
+            <div id="page-asistente" class="hidden-page page-assistant-content">
+
+    <div class="assistant-header-fixed">
+        <div class="assistant-header-details">
+            <div class="assistant-icon-bg">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div>
+                <h2>Asistente IA LessEnergy</h2>
+                <p>Pregúntame sobre ahorro energético y recomendaciones</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="chat-area" id="chat-area">
+        
+        <div class="chat-message ai-message">
+            <div class="ai-avatar-icon"><i class="fas fa-robot"></i></div>
+            <div class="message-bubble">
+                ¡Hola! Soy tu asistente de energía. Puedo ayudarte a entender tus patrones de consumo y darte recomendaciones personalizadas. ¿En qué puedo ayudarte hoy?
+            </div>
+        </div>
+
+        <div class="chat-message user-message">
+            <div class="message-bubble">
+                ¿Cómo puedo reducir el consumo de mi aire acondicionado?
+            </div>
+        </div>
+
+        <div class="chat-message ai-message">
+            <div class="ai-avatar-icon"><i class="fas fa-robot"></i></div>
+            <div class="message-bubble">
+                Excelente pregunta. Aquí te dejo algunas recomendaciones específicas para tu aire acondicionado:
+                <ol>
+                    <li><strong>Temperatura óptima:</strong> Configúralo a 24-25°C. Cada grado menos aumenta el consumo un 8%.</li>
+                    <li><strong>Modo ECO:</strong> Activa el modo económico durante la noche. Ahorro de hasta 30%.</li>
+                    <li><strong>Mantenimiento:</strong> Limpia los filtros mensualmente para mantener eficiencia.</li>
+                    <li><strong>Programación:</strong> Apágalo 30 min antes de salir. La habitación mantiene el fresco.</li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="assistant-input-area-fixed">
+        
+        <div class="quick-questions">
+            <button class="suggestion-tag" data-question="¿Cómo programar apagado automático?">¿Cómo programar apagado automático?</button>
+            <button class="suggestion-tag" data-question="Mejores horarios para lavar ropa">Mejores horarios para lavar ropa</button>
+            <button class="suggestion-tag" data-question="¿Qué dispositivo consume más?">¿Qué dispositivo consume más?</button>
+        </div>
+
+        <div class="chat-input-container">
+            <input type="text" id="chat-input" placeholder="Escribe tu pregunta aquí..." autofocus>
+            <button id="send-btn" class="send-btn">
+                <i class="fas fa-paper-plane"></i> Enviar
+            </button>
+        </div>
+    </div>
+</div>
+            <div id="page-parental" class="hidden-page page-parental-content">
+
+    <div class="parental-header">
+        <div class="header-icon-container icon-orange">
+            <i class="fas fa-child"></i>
+        </div>
+        <div>
+            <h2>Control Parental Energético</h2>
+            <p>Gestiona el tiempo de uso de dispositivos en zonas infantiles</p>
+        </div>
+        <button class="btn-new-rule">
+            <i class="fas fa-plus"></i> Nueva Regla
+        </button>
+    </div>
+
+    <div class="parental-rules-grid">
+        
+        <div class="rule-card card-juegos">
+            <div class="rule-details">
+                <h3 class="rule-title">Zona de Juegos</h3>
+                <p class="rule-devices">Consola, TV, Tablet</p>
+            </div>
+            <div class="switch-container">
+                <label class="switch-toggle">
+                    <input type="checkbox" checked>
+                    <span class="slider-toggle toggle-orange"></span>
+                </label>
+            </div>
+
+            <div class="usage-summary">
+                <h4 class="usage-time">2h 15min / <span class="limit">3h</span></h4>
+                <p class="usage-label">Tiempo usado hoy</p>
+            </div>
+
+            <div class="progress-bar-parental">
+                <div class="progress-fill fill-orange" style="width: 75%;"></div>
+            </div>
+            <div class="time-remaining">
+                <small>75% usado</small>
+                <small>45 min restantes</small>
+            </div>
+
+            <div class="limit-box limit-active">
+                <i class="fas fa-clock"></i>
+                Límite diario: 15:00 – 18:00
+            </div>
+
+            <div class="rule-actions">
+                <button class="btn-config"><i class="fas fa-cog"></i> Configurar</button>
+                <button class="btn-extend btn-orange-solid"><i class="fas fa-plus"></i> Extender</button>
+            </div>
+        </div>
+
+        <div class="rule-card card-dormitorio">
+            <div class="rule-details">
+                <h3 class="rule-title">Dormitorio Infantil</h3>
+                <p class="rule-devices">TV, Tablet, Lámpara Smart</p>
+            </div>
+            <div class="switch-container">
+                <label class="switch-toggle">
+                    <input type="checkbox" checked>
+                    <span class="slider-toggle toggle-green"></span>
+                </label>
+            </div>
+
+            <div class="usage-summary">
+                <h4 class="usage-time">1h 45min / <span class="limit">2h</span></h4>
+                <p class="usage-label">Tiempo usado hoy</p>
+            </div>
+
+            <div class="progress-bar-parental">
+                <div class="progress-fill fill-green" style="width: 87%;"></div>
+            </div>
+            <div class="time-remaining">
+                <small>87% usado</small>
+                <small>15 min restantes</small>
+            </div>
+
+            <div class="limit-box limit-active limit-purple">
+                <i class="fas fa-moon"></i>
+                Apagado automático: 21:00
+            </div>
+
+            <div class="rule-actions">
+                <button class="btn-config"><i class="fas fa-cog"></i> Configurar</button>
+                <button class="btn-extend btn-orange-solid"><i class="fas fa-plus"></i> Extender</button>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="active-notifications-box">
+        <i class="fas fa-info-circle"></i>
+        <p>
+            Notificaciones Activas
+            <br>
+            Los niños recibirán una notificación 10 minutos antes de que se apaguen los dispositivos. Puedes extender el tiempo desde esta pantalla o desde la app móvil.
+        </p>
+    </div>
+
+</div>
+           <div id="page-privacidad" class="hidden-page page-privacy-content">
+
+    <div class="privacy-main-header">
+        <i class="fas fa-shield-alt icon-red"></i>
+        <div>
+            <h2>Privacidad y Gestión de Datos</h2>
+            <p>Controla tu información personal y configuraciones de privacidad</p>
+        </div>
+    </div>
+
+    <div class="privacy-grid">
+        
+        <div class="privacy-card card-deletion">
+            <div class="card-header-icon icon-red-bg">
+                <i class="fas fa-trash-alt"></i>
+            </div>
+            <h3 class="card-title-privacy">Eliminación de Datos</h3>
+            <p class="card-subtitle-privacy">Borra tu información personal</p>
+            
+            <p class="card-description-privacy">Elimina permanentemente todos tus datos personales, historial de consumo y configuraciones de la aplicación.</p>
+
+            <div class="alert-warning-privacy">
+                <i class="fas fa-exclamation-triangle"></i>
+                Esta acción es irreversible. Una vez eliminados, los datos no podrán ser recuperados.
+            </div>
+
+            <button class="btn-delete-data">
+                <i class="fas fa-trash-alt"></i> Eliminar Todos mis Datos
+            </button>
+        </div>
+
+        <div class="privacy-card card-consent">
+            <div class="card-header-icon icon-yellow-bg">
+                <i class="fas fa-user-check"></i>
+            </div>
+            <h3 class="card-title-privacy">Consentimiento de Datos</h3>
+            <p class="card-subtitle-privacy">Gestiona permisos de uso</p>
+
+            <div class="toggle-group-privacy">
+                <span class="toggle-label">Análisis de patrones</span>
+                <span class="toggle-sublabel">Para recomendaciones personalizadas</span>
+                <label class="switch-toggle switch-small">
+                    <input type="checkbox" checked>
+                    <span class="slider-toggle toggle-yellow"></span>
+                </label>
+            </div>
+
+            <div class="toggle-group-privacy toggle-group-inactive">
+                <span class="toggle-label">Compartir datos anónimos</span>
+                <span class="toggle-sublabel">Mejorar el servicio</span>
+                <label class="switch-toggle switch-small">
+                    <input type="checkbox">
+                    <span class="slider-toggle toggle-gray"></span>
+                </label>
+            </div>
+
+            <button class="btn-revoke-consent">
+                <i class="fas fa-undo-alt"></i> Revocar Todos los Consentimientos
+            </button>
+        </div>
+
+        <div class="privacy-card card-history">
+            <div class="card-header-icon icon-blue-bg">
+                <i class="fas fa-history"></i>
+            </div>
+            <h3 class="card-title-privacy">Historial Automático</h3>
+            <p class="card-subtitle-privacy">Eliminación programada</p>
+
+            <p class="card-description-privacy">Configura la eliminación automática de tu historial de consumo después de un período determinado.</p>
+
+            <div class="radio-group-privacy">
+                <label class="radio-label"><input type="radio" name="history-deletion" checked> Nunca eliminar</label>
+                <label class="radio-label"><input type="radio" name="history-deletion"> Después de 3 meses</label>
+                <label class="radio-label"><input type="radio" name="history-deletion"> Después de 6 meses</label>
+                <label class="radio-label"><input type="radio" name="history-deletion"> Después de 1 año</label>
+            </div>
+
+            <button class="btn-save-config">
+                <i class="fas fa-save"></i> Guardar Configuración
+            </button>
+        </div>
+
+        <div class="privacy-card card-export">
+            <div class="card-header-icon icon-green-bg">
+                <i class="fas fa-download"></i>
+            </div>
+            <h3 class="card-title-privacy">Exportar Datos</h3>
+            <p class="card-subtitle-privacy">Descarga tu información</p>
+
+            <p class="card-description-privacy">Solicita una copia de todos tus datos personales y estadísticas de consumo en formato JSON o CSV.</p>
+
+            <div class="export-checklist">
+                <div>Datos personales <i class="fas fa-check"></i></div>
+                <div>Historial de consumo <i class="fas fa-check"></i></div>
+                <div>Configuraciones <i class="fas fa-check"></i></div>
+            </div>
+
+            <button class="btn-export-data">
+                <i class="fas fa-file-export"></i> Solicitar Exportación
+            </button>
+        </div>
+        
+    </div>
+</div>
+            <div id="page-configuracion" class="hidden-page"></div>
+
+        </main>
+    </div>
+<script src="assets/scripts/script.js"></script>
+</body>
+</html>

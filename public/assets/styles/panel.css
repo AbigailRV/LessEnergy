@@ -1,0 +1,2578 @@
+/* ==================================== */
+/* 1. CONFIGURACIÓN GENERAL Y VARIABLES */
+/* ==================================== */
+:root {
+    /* Paleta LessEnergy */
+    --color-white: #FFFFFF;
+    --color-green-main: #a9e159; /* Verde para acciones y sostenibilidad */
+    --color-blue-info: #42A5F5;  /* Azul claro para información y títulos/paneles */
+    --color-yellow-alert: #FFF59D; /* Amarillo suave para alertas */
+
+    /* Colores de Soporte */
+    --text-dark: #1f2937;
+    --text-light: #4b5563;
+    --bg-light: #f3f4f6;
+    --red-trend: #ef4444;
+    --border-light: #e5e7eb;
+
+    /* Colores de Dispositivos (Consolidados aquí) */
+    --color-high-alert: #ef4444;      /* Rojo para ALERTA ALTA */
+    --color-normal: #10b981;         /* Verde secundario para NORMAL */
+    --color-media: #f59e0b;          /* Amarillo/Naranja para MEDIA */
+    --color-blocked: #6b7280;        /* Gris para Bloqueado */
+    --color-progress-red: #f87171;
+    --color-progress-green: #34d399;
+    --color-progress-yellow: #fbbf24;
+}
+
+/* Reset y Tipografía */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    font-size: 14px;
+}
+
+/* Contenedor Principal */
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ==================================== */
+/* 2. BARRA LATERAL (SIDEBAR) */
+/* ==================================== */
+.sidebar {
+    width: 250px;
+    background-color: var(--color-white);
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+}
+
+.logo {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: var(--color-blue-info);
+    padding: 0 20px 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo i {
+    font-size: 1.5em;
+    color: var(--color-green-main);
+}
+
+.logo span {
+    display: block;
+    font-size: 0.6em;
+    font-weight: 500;
+    color: var(--text-light);
+    margin-left: -50px;
+    margin-top: 25px;
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.main-nav li {
+    padding: 12px 20px;
+    color: var(--text-light);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: background-color 0.2s, color 0.2s;
+    font-weight: 500;
+}
+
+.main-nav li:hover {
+    background-color: var(--bg-light);
+}
+
+.main-nav li.active {
+    background-color: #f1f8e9; /* Fondo muy claro basado en el verde */
+    color: var(--color-green-main);
+    border-right: 4px solid var(--color-green-main);
+    font-weight: 600;
+}
+
+.main-nav .badge {
+    background-color: var(--red-trend);
+    color: white;
+    font-size: 0.7em;
+    padding: 2px 6px;
+    border-radius: 10px;
+    margin-left: auto;
+}
+
+.premium-plan {
+    margin: 30px 20px 20px;
+    padding: 15px;
+    background-color: var(--color-yellow-alert);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.premium-plan i {
+    color: #ffd700;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.premium-plan p {
+    font-weight: 600;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.premium-plan small {
+    display: block;
+    font-size: 0.75em;
+    color: var(--text-light);
+    margin-bottom: 15px;
+}
+
+.upgrade-btn {
+    background-color: var(--color-green-main);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: background-color 0.2s;
+}
+
+.upgrade-btn:hover {
+    background-color: #8cbf49;
+}
+
+/* ==================================== */
+/* 3. CONTENIDO PRINCIPAL Y HEADER SUPERIOR */
+/* ==================================== */
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+/* Encabezado Superior (Top Header) */
+.top-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.top-header h2 {
+    font-size: 1.6em;
+    font-weight: 600;
+    margin-right: 30px;
+    color: var(--color-blue-info);
+}
+
+.system-status {
+    color: var(--color-green-main);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.status-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-green-main);
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-white);
+    padding: 8px 15px;
+    border-radius: 20px;
+    flex-grow: 0.5;
+    max-width: 400px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar i {
+    color: var(--text-light);
+    margin-right: 10px;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    font-size: 1em;
+}
+
+.icons {
+    margin-left: auto;
+    display: flex;
+    gap: 15px;
+    color: var(--text-light);
+    font-size: 1.2em;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-left: 15px;
+    border-left: 1px solid var(--border-light);
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    background-color: var(--bg-light); 
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar i {
+    font-size: 1.2em; /* Tamaño del ícono */
+    color: var(--text-light); /* Color del ícono (gris suave) */
+}
+
+.details {
+    line-height: 1.2;
+}
+
+.details .name {
+    font-weight: 600;
+    margin: 0;
+}
+
+.details .role {
+    font-size: 0.8em;
+    color: var(--text-light);
+    margin: 0;
+}
+
+/* ==================================== */
+/* 4. SECCIÓN CONSUMO EN TIEMPO REAL (KPIs) */
+/* ==================================== */
+.real-time-consumption {
+    background-color: var(--color-blue-info);
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.header-rt {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.header-rt h3 {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.header-rt p {
+    font-size: 0.9em;
+    opacity: 0.9;
+}
+
+.last-update {
+    float: right;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+.last-update span {
+    font-weight: 700;
+    display: block;
+    font-size: 1.2em;
+}
+
+.kpi-cards {
+    display: flex;
+    gap: 20px;
+    clear: both;
+    padding-top: 10px;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.2);
+    flex: 1;
+    padding: 15px 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.card i {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5em;
+    opacity: 0.7;
+}
+
+.card .label {
+    font-size: 0.8em;
+    opacity: 0.9;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.card .value {
+    font-size: 1.8em;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.card .unit {
+    font-size: 0.8em;
+    opacity: 0.9;
+    margin-bottom: 10px;
+}
+
+.trend {
+    font-size: 0.8em;
+    font-weight: 600;
+}
+
+.trend.up {
+    color: var(--color-green-main);
+}
+
+.trend.down {
+    color: var(--red-trend);
+}
+
+.trend i {
+    position: static;
+    font-size: 0.9em;
+    margin-right: 3px;
+}
+
+.estimated-cost .value {
+    font-size: 1.8em;
+}
+
+.estimated-cost .projection {
+    font-size: 0.8em;
+    font-weight: 500;
+    color: var(--color-yellow-alert);
+}
+
+.estimated-cost .projection i {
+    position: static;
+    margin-right: 5px;
+}
+
+.co2-savings .unit {
+    margin-bottom: 0;
+}
+
+.co2-savings .equivalent {
+    font-size: 0.8em;
+    font-weight: 500;
+    opacity: 0.9;
+    margin-top: 10px;
+}
+
+/* ==================================== */
+/* 5. SECCIÓN GRÁFICO (CORRECCIÓN FINAL) */
+/* ==================================== */
+.hourly-consumption-chart {
+    background-color: var(--color-white);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.chart-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.chart-header h4 {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin: 0;
+    color: var(--color-blue-info);
+}
+
+.chart-header p {
+    font-size: 0.85em;
+    color: var(--text-light);
+    margin-left: 15px;
+}
+
+.chart-tabs {
+    margin-left: auto;
+    display: flex;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.chart-tabs .tab {
+    background: none;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--text-light);
+    transition: background-color 0.2s, color 0.2s;
+    font-size: 0.9em;
+}
+
+.chart-tabs .tab.active {
+    background-color: var(--color-green-main);
+    color: white;
+}
+
+/* Simulación de Gráfico de Barras - Versión Corregida */
+.chart-area {
+    padding-right: 20px;
+}
+
+.bar-chart-simulation {
+    display: flex;
+    position: relative;
+    height: 300px;
+    padding-top: 10px;
+}
+
+.y-axis {
+    width: 40px;
+    display: flex;
+    flex-direction: column; /* De arriba a abajo */
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 0.75em;
+    color: var(--text-light);
+    padding-bottom: 20px;
+}
+
+.y-axis span {
+    height: 100%;
+}
+
+.chart-grid-and-bars {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.chart-grid {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 1px;
+}
+
+.chart-grid-line {
+    border-top: 1px dashed var(--border-light);
+    width: 100%;
+}
+
+/* La línea de base (0) es sólida */
+.chart-grid-line:last-child {
+    border-top: 1px solid #ccc;
+}
+
+
+.bars {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: flex-end; /* Alinear las barras al fondo (eje 0) */
+    justify-content: space-around;
+    gap: 5px;
+    padding-bottom: 1px;
+}
+
+.bar {
+    width: 80%;
+    max-width: 25px;
+    background-color: var(--color-blue-info);
+    border-radius: 4px 4px 0 0;
+    transition: height 0.3s;
+    z-index: 10;
+}
+
+.bar:nth-child(11) {
+    background-color: var(--color-green-main);
+}
+
+.x-axis-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75em;
+    color: var(--text-light);
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+/* ==================================== */
+/* 6. ESTILOS DE LA PÁGINA DISPOSITIVOS */
+/* ==================================== */
+
+/* Header principal de la página de Dispositivos */
+.devices-page-content {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.devices-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    margin-top: 30px; /* Separación de la sección anterior */
+}
+
+.devices-header h2 {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.devices-header p {
+    font-size: 1em;
+    color: var(--text-light);
+    margin-left: 20px;
+}
+
+.devices-header .btn-add-device {
+    background-color: var(--color-blue-info);
+    color: var(--color-white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+    margin-left: auto;
+}
+
+.devices-header .btn-add-device:hover {
+    background-color: #3b82f6; /* Azul más oscuro */
+}
+
+/* Contenedor de la Rejilla */
+.devices-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+/* Estilo Base de las Tarjetas de Dispositivos */
+.device-card {
+    background-color: var(--color-white);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    position: relative;
+    border: 1px solid var(--border-light);
+}
+
+.device-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.device-info i {
+    font-size: 24px;
+    width: 30px; /* Asegura el mismo espacio para todos los iconos */
+}
+
+.device-info .name {
+    font-weight: 600;
+    font-size: 1.1em;
+    line-height: 1.2;
+}
+
+.device-info .zone {
+    font-size: 0.8em;
+    color: var(--text-light);
+}
+
+/* Etiquetas de Estado (Status Tags) */
+.status-tag {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 0.75em;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: var(--color-white);
+}
+
+.tag-red {
+    background-color: var(--color-high-alert);
+}
+.tag-yellow {
+    background-color: var(--color-media);
+}
+.tag-green {
+    background-color: var(--color-normal);
+}
+
+/* Colores de Iconos por Estado */
+.icon-red { color: var(--color-high-alert); }
+.icon-yellow { color: var(--color-media); }
+.icon-green { color: var(--color-normal); }
+
+/* Datos de Consumo */
+.consumption-data {
+    margin: 15px 0 10px;
+}
+
+.consumption-data .label {
+    font-size: 0.8em;
+    color: var(--text-light);
+    margin-bottom: 5px;
+}
+
+.consumption-data .value {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1;
+}
+
+.consumption-data .unit {
+    font-size: 0.6em;
+    font-weight: 500;
+    color: var(--text-light);
+}
+
+/* Barra de Uso y Límite */
+.usage-bar {
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    height: 8px;
+    background-color: var(--bg-light);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.progress-fill {
+    height: 100%;
+    transition: width 0.4s ease;
+    border-radius: 4px;
+}
+
+/* Barras de color específicas */
+.device-card.high-alert .progress-fill {
+    background-color: var(--color-progress-red);
+}
+.device-card.media-use .progress-fill {
+    background-color: var(--color-progress-yellow);
+}
+.device-card.normal-use .progress-fill {
+    background-color: var(--color-progress-green);
+}
+
+.limit-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7em;
+    color: var(--text-light);
+}
+
+/* Botones de Acción */
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.actions button {
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.9em;
+}
+
+.btn-details {
+    background-color: var(--color-white);
+    border: 1px solid var(--border-light);
+    color: var(--text-dark);
+}
+
+.btn-details:hover {
+    background-color: var(--bg-light);
+}
+
+.btn-action {
+    border: none;
+    color: var(--color-white);
+}
+
+/* Colores de botones de APAGAR */
+.btn-red {
+    background-color: var(--color-high-alert);
+}
+.btn-yellow-action {
+    background-color: var(--color-media);
+}
+.btn-green-action {
+    background-color: var(--color-normal);
+}
+
+/* Botón Bloqueado */
+.btn-blocked {
+    background-color: var(--color-blocked);
+    border: none;
+    color: var(--color-white);
+    pointer-events: none; /* Inactivo */
+}
+
+/* --- Detección Automática de Dispositivos --- */
+.auto-detection-section {
+    margin-top: 20px;
+}
+
+.auto-detection-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.auto-detection-header h3 {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.auto-detection-header p {
+    font-size: 0.9em;
+    color: var(--text-light);
+    margin-right: auto;
+    margin-left: 20px;
+}
+
+.auto-detection-header .btn-scan {
+    background-color: var(--color-blue-info);
+    color: var(--color-white);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+}
+
+.auto-detection-header .btn-scan:hover {
+    background-color: #3b82f6;
+}
+
+.new-devices-container {
+    display: flex;
+    gap: 20px;
+}
+
+.new-device-card {
+    background-color: var(--color-white);
+    border: 1px dashed var(--border-light);
+    border-radius: 12px;
+    padding: 15px;
+    width: 300px;
+    display: grid;
+    grid-template-areas:
+        "icon info tag"
+        "actions actions actions";
+    grid-template-columns: auto 1fr auto;
+    gap: 10px;
+    position: relative;
+}
+
+.device-icon-new {
+    grid-area: icon;
+    width: 40px;
+    height: 40px;
+    background-color: var(--bg-light);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    color: var(--text-light);
+}
+
+.device-details-new {
+    grid-area: info;
+    line-height: 1.3;
+}
+
+.device-details-new .name {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.device-details-new small {
+    display: block;
+    font-size: 0.8em;
+    color: var(--text-light);
+}
+
+.tag-new {
+    grid-area: tag;
+    background-color: var(--color-normal);
+    color: var(--color-white);
+    font-size: 0.7em;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    align-self: flex-start;
+}
+
+.add-device-actions {
+    grid-area: actions;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.zone-select-group {
+    flex-grow: 1;
+}
+
+.zone-select-group select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    background-color: var(--color-white);
+    font-size: 0.9em;
+    color: var(--text-dark);
+}
+
+.btn-add-small {
+    background-color: var(--color-blue-info);
+    color: var(--color-white);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9em;
+    transition: background-color 0.2s;
+}
+
+.btn-add-small:hover {
+    background-color: #3b82f6;
+}
+
+/* ==================================== */
+/* 7. GESTIÓN DE PÁGINAS (Simulación de Navegación) */
+/* ==================================== */
+
+/* Oculta las secciones que no están activas */
+.hidden-page {
+    display: none !important;
+}
+
+/* Modifica la clase activa del menú para seleccionarla mejor con JS */
+.main-nav .nav-link.active {
+    background-color: #f1f8e9; /* Fondo muy claro basado en el verde */
+    color: var(--color-green-main);
+    border-right: 4px solid var(--color-green-main);
+    font-weight: 600;
+}
+
+/* Contenedor General */
+.automation-section {
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+/* Header de Programación */
+.automation-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.automation-header h2 {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.automation-header p {
+    font-size: 1em;
+    color: var(--text-light);
+    margin-right: auto;
+    margin-left: 20px;
+}
+
+.automation-header .btn-new-program {
+    background-color: var(--color-blue-info); /* Botón principal en Azul */
+    color: var(--color-white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+}
+
+.automation-header .btn-new-program:hover {
+    background-color: #3b82f6;
+}
+
+/* Estilo de las Tarjetas de Programación */
+.program-card {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-white);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 15px;
+    border: 1px solid var(--border-light);
+    transition: box-shadow 0.2s;
+}
+
+.program-card:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Iconos de Programación */
+.program-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4em;
+    color: var(--color-white);
+    flex-shrink: 0;
+    margin-right: 20px;
+}
+
+.icon-blue-bg {
+    background-color: var(--color-blue-info);
+}
+
+.icon-green-bg {
+    background-color: var(--color-normal); /* Verde secundario de Dispositivos */
+}
+
+.icon-gray-bg {
+    background-color: var(--color-blocked); /* Gris para inactivos */
+}
+
+/* Detalles del Programa */
+.program-details {
+    flex-grow: 1;
+}
+
+.program-title {
+    font-size: 1.1em;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.program-devices {
+    font-size: 0.9em;
+    color: var(--text-light);
+    margin-bottom: 10px;
+}
+
+.program-meta {
+    display: flex;
+    gap: 15px;
+    font-size: 0.8em;
+    color: var(--text-light);
+}
+
+.program-meta i {
+    margin-right: 5px;
+}
+
+.program-time {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-left: 30px;
+    margin-right: 30px;
+    flex-shrink: 0;
+}
+
+/* Estilo para programas inactivos */
+.inactive-program {
+    opacity: 0.7;
+    pointer-events: none; /* Se ve inactivo */
+}
+
+.inactive-program .program-title,
+.inactive-program .program-time {
+    color: var(--text-light);
+}
+
+.tag-inactive {
+    background-color: var(--color-blocked);
+    color: var(--color-white);
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.switch-toggle {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 28px;
+    flex-shrink: 0;
+}
+.switch-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider-toggle {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+.slider-toggle:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+input:checked + .slider-toggle {
+    background-color: var(--color-normal); /* Verde LessEnergy para ON */
+}
+input:checked + .slider-toggle:before {
+    transform: translateX(20px);
+}
+
+/* ==================================== */
+/* 8. PÁGINA DE REPORTES DE CONSUMO */
+/* ==================================== */
+
+/* Contenedor Principal */
+.page-reports-content {
+    padding-top: 10px;
+}
+
+/* Header de la Página de Reportes */
+.reports-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.reports-header h2 {
+    font-size: 1.6em;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.reports-header p {
+    font-size: 0.9em;
+    color: var(--text-light);
+    margin-right: 20px;
+}
+
+.report-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+
+/* Tabs e Botones */
+.report-tab {
+    background-color: var(--color-white);
+    color: var(--text-light);
+    border: 1px solid var(--border-light);
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.report-tab.active {
+    background-color: var(--color-blue-info);
+    color: var(--color-white);
+    border-color: var(--color-blue-info);
+}
+
+.btn-export {
+    background-color: var(--color-green-main);
+    color: var(--color-white);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+}
+
+.btn-export:hover {
+    background-color: #8cbf49;
+}
+
+/* Contenedores de Gráficos */
+.reports-top-charts {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Área de consumo más ancha que el pastel */
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.reports-bottom-charts {
+    margin-bottom: 20px;
+}
+
+.chart-card {
+    background-color: var(--color-white);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.chart-title {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+}
+
+/* --- Simulación de Gráfico de Área (Consumo por Hora) --- */
+.chart-simulation-area-consumption {
+    height: 250px;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.area-chart-labels-y {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    font-size: 0.75em;
+    color: var(--text-light);
+    padding-right: 50px;
+}
+
+.area-chart-labels-y span {
+    position: relative;
+    padding-left: 5px;
+}
+
+/* Líneas de la cuadrícula horizontal */
+.area-chart-labels-y span:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 45px;
+    right: 0;
+    top: 50%;
+    border-top: 1px dashed var(--border-light);
+    transform: translateY(-50%);
+}
+.area-chart-labels-y span:last-child::after {
+    border-top: 1px solid #ccc; /* Eje X principal */
+}
+
+/* Gráfica de área simulada (Se usa un pseudo-elemento para el área y el borde superior) */
+.chart-area-consumption::before {
+    content: '';
+    position: absolute;
+    top: 60px; /* Ajuste para el título */
+    left: 40px;
+    right: 20px;
+    bottom: 40px;
+    background: linear-gradient(to top, rgba(169, 225, 89, 0.2) 0%, rgba(169, 225, 89, 0.8) 100%); /* Degradado Verde */
+    clip-path: polygon(0 100%, 0 90%, 15% 95%, 25% 70%, 40% 50%, 55% 40%, 75% 20%, 90% 10%, 100% 0, 100% 100%);
+}
+.chart-area-consumption {
+    position: relative;
+    overflow: hidden; /* Oculta el pseudo-elemento para que no salga del div */
+}
+
+
+.area-chart-labels-x {
+    position: absolute;
+    bottom: 0;
+    left: 50px;
+    right: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75em;
+    color: var(--text-light);
+}
+
+/* --- Simulación de Gráfico de Pastel (Distribución por Zona) --- */
+.chart-pie-distribution {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chart-simulation-pie {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* Placeholder circular */
+.pie-chart-placeholder {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    /* Simulación de pastel con colores */
+    background: conic-gradient(
+        var(--color-blue-info) 0 35%,
+        #9370db 35% 40%, /* Púrpura para el 5% */
+        #ff9900 40% 60%,  /* Naranja para el 20% */
+        var(--color-normal) 60% 88%, /* Verde para el 28% */
+        var(--bg-light) 88% 100%  /* Gris para el 12% restante */
+    );
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.pie-legend {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 0.9em;
+    color: var(--text-dark);
+}
+
+.pie-legend .dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.dot-blue { background-color: var(--color-blue-info); }
+.dot-purple { background-color: #9370db; }
+.dot-orange { background-color: #ff9900; }
+.dot-green { background-color: var(--color-normal); }
+.dot-gray { background-color: var(--border-light); }
+
+/* --- Simulación de Gráfico de Barras Comparativa --- */
+.chart-simulation-bar-comparative {
+    display: flex;
+    height: 250px;
+    padding-right: 10px;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+}
+
+.bar-y-axis {
+    width: 40px;
+    height: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 0.75em;
+    color: var(--text-light);
+    padding-bottom: 20px;
+}
+.bar-y-axis span {
+    position: relative;
+}
+.bar-y-axis span:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 45px;
+    right: -10px;
+    top: 50%;
+    border-top: 1px dashed var(--border-light);
+    transform: translateY(-50%);
+}
+
+.bar-comparative-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    padding: 0 10px 0 5px;
+}
+
+.bar-group {
+    height: 100%;
+    width: calc((100% - 100px) / 7);
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    position: relative;
+    padding-bottom: 20px;
+}
+.bar-group::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: 0;
+    font-size: 0.8em;
+    color: var(--text-light);
+}
+
+.bar-comp {
+    width: 45%;
+    border-radius: 4px 4px 0 0;
+    transition: height 0.3s;
+}
+
+.bar-current {
+    background-color: var(--color-blue-info);
+}
+
+.bar-previous {
+    background-color: var(--border-light); /* Gris claro */
+}
+
+/* Leyenda inferior */
+.comparative-legend {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: var(--text-dark);
+}
+
+.comparative-legend .legend-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    margin-right: 5px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+}
+
+/* ==================================== */
+/* 9. PÁGINA DE RECOMENDACIONES */
+/* ==================================== */
+
+/* Header de Recomendaciones */
+.recommendations-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-top: 10px;
+}
+
+.recommendations-header h2 {
+    font-size: 1.6em;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.recommendations-header p {
+    font-size: 0.9em;
+    color: var(--text-light);
+}
+
+.header-icon-container {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: var(--color-blue-info); /* Un icono para el header */
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    margin-right: 15px;
+}
+
+/* Contenedor de las Tarjetas */
+.recommendation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+/* Estilo de la Tarjeta Individual */
+.recommendation-card {
+    background-color: var(--color-white);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-light);
+    transition: transform 0.2s;
+}
+
+.recommendation-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* Icono dentro de la Tarjeta */
+.card-icon-bg {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1em;
+}
+
+/* Colores de los Iconos (Fondo y Texto) */
+.icon-green-light {
+    background-color: #e6ffe6; /* Verde muy claro */
+    color: var(--color-normal);
+}
+.icon-blue-light {
+    background-color: #e6f0ff; /* Azul muy claro */
+    color: var(--color-blue-info);
+}
+.icon-yellow-light {
+    background-color: #fffbe6; /* Amarillo muy claro */
+    color: #ffd700; /* Dorado para amarillo */
+}
+.icon-purple-light {
+    background-color: #f0e6ff; /* Morado muy claro */
+    color: #9370db; /* Morado */
+}
+
+/* Estilo de los Tags de Ahorro */
+.tag {
+    font-size: 0.8em;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+}
+
+.tag-high-savings {
+    background-color: var(--color-normal);
+    color: var(--color-white);
+}
+
+.tag-medium-savings {
+    background-color: var(--color-blue-info);
+    color: var(--color-white);
+}
+
+.tag-low-savings {
+    background-color: #ffd700; /* Dorado/Amarillo */
+    color: var(--text-dark);
+}
+
+.tag-new {
+    background-color: #9370db; /* Morado */
+    color: var(--color-white);
+}
+
+.card-title {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+
+.card-description {
+    font-size: 0.9em;
+    color: var(--text-dark);
+    line-height: 1.4;
+    margin-bottom: 20px;
+    height: 3em; /* Para asegurar altura consistente */
+}
+
+/* Footer (Nivel de Implementación y Enlace) */
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-light);
+}
+
+.implementation-level {
+    font-size: 0.85em;
+    color: var(--text-light);
+}
+
+.btn-details {
+    font-size: 0.9em;
+    font-weight: 600;
+    color: var(--color-blue-info);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.btn-details:hover {
+    color: #3b82f6;
+}
+
+/* --- Resumen de Ahorro Total Potencial --- */
+.total-savings-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-white);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-light);
+}
+
+.savings-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.savings-text i {
+    font-size: 1.5em;
+    color: #9370db; /* Icono Morado */
+    margin-bottom: 5px;
+}
+
+.savings-text span {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.savings-text p {
+    font-size: 0.85em;
+    color: var(--text-light);
+}
+
+.savings-amount {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+}
+
+.savings-amount .amount {
+    font-size: 2.2em;
+    font-weight: 800;
+    color: #9370db; /* Monto en Morado */
+}
+
+.savings-amount .period {
+    font-size: 1em;
+    color: var(--text-light);
+    font-weight: 600;
+}
+
+/* ==================================== */
+/* 10. PÁGINA DE ASISTENTE IA */
+/* ==================================== */
+
+.page-assistant-content {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 80px); /* Ajuste para que ocupe casi toda la altura de la vista */
+    background-color: var(--bg-light); /* Fondo más claro */
+    padding: 0;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Header Fijo */
+.assistant-header-fixed {
+    background: linear-gradient(90deg, #9370db, var(--color-blue-info)); /* Degradado morado/azul */
+    padding: 15px 25px;
+    color: var(--color-white);
+    flex-shrink: 0;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.assistant-header-details {
+    display: flex;
+    align-items: center;
+}
+
+.assistant-header-fixed h2 {
+    font-size: 1.4em;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.assistant-header-fixed p {
+    font-size: 0.9em;
+    opacity: 0.9;
+}
+
+.assistant-icon-bg {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--color-white);
+    color: #9370db; /* Morado */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    margin-right: 15px;
+}
+
+/* Área de Mensajes */
+.chat-area {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 20px;
+    background-color: var(--color-white);
+}
+
+.chat-message {
+    display: flex;
+    margin-bottom: 15px;
+    max-width: 80%;
+}
+
+.ai-message {
+    justify-content: flex-start;
+    margin-right: auto;
+}
+
+.user-message {
+    justify-content: flex-end;
+    margin-left: auto;
+}
+
+.message-bubble {
+    padding: 12px 18px;
+    border-radius: 20px;
+    font-size: 0.95em;
+    line-height: 1.4;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.ai-message .message-bubble {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    border-bottom-left-radius: 4px;
+    margin-left: 10px;
+}
+
+.user-message .message-bubble {
+    background-color: var(--color-blue-info); /* Azul para el usuario */
+    color: var(--color-white);
+    border-bottom-right-radius: 4px;
+    margin-right: 10px;
+}
+
+/* Iconos de Avatar AI */
+.ai-avatar-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #9370db; /* Morado */
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em;
+    flex-shrink: 0;
+}
+
+/* Estilo para listas dentro del chat */
+.message-bubble ol {
+    padding-left: 20px;
+    margin-top: 10px;
+}
+.message-bubble li {
+    margin-bottom: 5px;
+}
+
+/* Área de Input Fija */
+.assistant-input-area-fixed {
+    flex-shrink: 0;
+    padding: 15px 20px;
+    border-top: 1px solid var(--border-light);
+    background-color: var(--color-white);
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+/* Sugerencias (Quick Questions) */
+.quick-questions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+    justify-content: flex-start;
+}
+
+.suggestion-tag {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    border: 1px solid var(--border-light);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.suggestion-tag:hover {
+    background-color: #e6f0ff;
+    border-color: var(--color-blue-info);
+}
+
+/* Contenedor del Input */
+.chat-input-container {
+    display: flex;
+    align-items: center;
+}
+
+#chat-input {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border: 1px solid var(--border-light);
+    border-radius: 8px 0 0 8px;
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+#chat-input:focus {
+    border-color: var(--color-blue-info);
+}
+
+.send-btn {
+    background-color: #9370db; /* Morado */
+    color: var(--color-white);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 0 8px 8px 0;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.send-btn:hover {
+    background-color: #7b4fcc;
+}
+
+/* ==================================== */
+/* 11. PÁGINA CONTROL PARENTAL ENERGÉTICO */
+/* ==================================== */
+
+/* Variables para Control Parental */
+:root {
+    --color-parental-orange: #f87d3e;
+    --color-parental-purple: #9370db;
+    --color-parental-green: #10b981;
+    --color-parental-bg-orange: #fff6f0;
+    --color-parental-bg-purple: #f8f0ff;
+}
+
+.page-parental-content {
+    padding-top: 10px;
+}
+
+/* Header de la Página */
+.parental-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.parental-header h2 {
+    font-size: 1.6em;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.parental-header p {
+    font-size: 0.9em;
+    color: var(--text-light);
+}
+
+.parental-header .header-icon-container {
+    background-color: var(--color-parental-orange);
+}
+
+.btn-new-rule {
+    background-color: var(--color-parental-orange);
+    color: var(--color-white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+    margin-left: auto;
+}
+
+.btn-new-rule:hover {
+    background-color: #e66628;
+}
+
+/* Rejilla de Reglas */
+.parental-rules-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+/* Estilo de la Tarjeta de Regla */
+.rule-card {
+    background-color: var(--color-white);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    position: relative;
+    border: 1px solid var(--border-light);
+}
+
+.rule-details {
+    display: inline-block;
+}
+
+.rule-title {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.rule-devices {
+    font-size: 0.9em;
+    color: var(--text-light);
+}
+
+/* Switch de Encendido/Apagado (Posicionado a la derecha) */
+.rule-card .switch-container {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+}
+
+/* Estilos específicos para el toggle (Sobreescribe el estilo genérico) */
+.slider-toggle.toggle-orange:checked {
+    background-color: var(--color-parental-orange);
+}
+.slider-toggle.toggle-green:checked {
+    background-color: var(--color-parental-green);
+}
+
+/* Sumario de Uso */
+.usage-summary {
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+.usage-time {
+    font-size: 1.8em;
+    font-weight: 800;
+    color: var(--text-dark);
+    line-height: 1;
+}
+
+.usage-time .limit {
+    font-size: 0.7em;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.usage-label {
+    font-size: 0.85em;
+    color: var(--text-light);
+}
+
+/* Barra de Progreso Parental */
+.progress-bar-parental {
+    height: 10px;
+    background-color: var(--bg-light);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 5px;
+}
+
+.fill-orange { background-color: var(--color-parental-orange); }
+.fill-green { background-color: var(--color-parental-green); }
+
+.time-remaining {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8em;
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+/* Caja de Límite de Horario/Apagado */
+.limit-box {
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 600;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.limit-active {
+    background-color: var(--color-parental-bg-orange);
+    color: var(--color-parental-orange);
+    border: 1px solid rgba(248, 125, 62, 0.5);
+}
+
+.limit-purple {
+    background-color: var(--color-parental-bg-purple);
+    color: var(--color-parental-purple);
+    border: 1px solid rgba(147, 112, 219, 0.5);
+}
+
+.limit-box i {
+    font-size: 1.1em;
+}
+
+/* Botones de Acción de la Regla */
+.rule-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-config, .btn-extend {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex: 1;
+    transition: background-color 0.2s;
+}
+
+.btn-config {
+    background-color: var(--color-white);
+    border: 1px solid var(--border-light);
+    color: var(--text-dark);
+}
+.btn-config:hover {
+    background-color: var(--bg-light);
+}
+
+.btn-orange-solid {
+    background-color: var(--color-parental-orange);
+    color: var(--color-white);
+    border: none;
+}
+.btn-orange-solid:hover {
+    background-color: #e66628;
+}
+
+
+/* Notificaciones Activas (Caja Inferior) */
+.active-notifications-box {
+    background-color: var(--color-blue-info);
+    color: var(--color-white);
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    font-size: 0.95em;
+    line-height: 1.4;
+}
+
+.active-notifications-box i {
+    font-size: 1.5em;
+    flex-shrink: 0;
+}
+
+.active-notifications-box p strong {
+    font-weight: 700;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* ==================================== */
+/* 12. PÁGINA PRIVACIDAD Y GESTIÓN DE DATOS */
+/* ==================================== */
+
+/* Colores Específicos para Privacidad */
+:root {
+    --color-privacy-red: #ef4444;
+    --color-privacy-orange: #d97706; /* Consentimiento - Color base */
+    --color-privacy-blue: #42A5F5;
+    --color-privacy-green: #10b981;
+    --color-privacy-red-light: #fef2f2;
+    --color-privacy-orange-light: #fefce8;
+}
+
+.page-privacy-content {
+    padding-top: 10px;
+}
+
+/* Header principal de la página */
+.privacy-main-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.privacy-main-header h2 {
+    font-size: 1.6em;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.privacy-main-header p {
+    font-size: 0.9em;
+    color: var(--text-light);
+}
+
+.privacy-main-header .icon-red {
+    font-size: 1.8em;
+    color: var(--color-privacy-red);
+}
+
+/* Rejilla de Tarjetas */
+.privacy-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.privacy-card {
+    background-color: var(--color-white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-light);
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    color: var(--color-white);
+}
+
+/* Colores de Iconos de Tarjeta */
+.icon-red-bg { background-color: var(--color-privacy-red); }
+.icon-yellow-bg { background-color: var(--color-privacy-orange); }
+.icon-blue-bg { background-color: var(--color-privacy-blue); }
+.icon-green-bg { background-color: var(--color-privacy-green); }
+
+.card-title-privacy {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.card-subtitle-privacy {
+    font-size: 0.9em;
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+.card-description-privacy {
+    font-size: 0.95em;
+    color: var(--text-dark);
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* --- Tarjeta 1: Eliminación de Datos --- */
+.alert-warning-privacy {
+    background-color: var(--color-privacy-red-light);
+    color: var(--color-privacy-red);
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    line-height: 1.4;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.btn-delete-data {
+    background-color: var(--color-privacy-red);
+    color: var(--color-white);
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background-color 0.2s;
+    margin-top: auto;
+}
+
+.btn-delete-data:hover { background-color: #d83a45; }
+
+/* --- Tarjeta 2: Consentimiento de Datos --- */
+.toggle-group-privacy {
+    display: grid;
+    grid-template-columns: 3fr auto auto;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.toggle-group-privacy:last-of-type {
+    border-bottom: none;
+    margin-bottom: 25px;
+}
+
+.toggle-group-privacy .toggle-label {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.toggle-group-privacy .toggle-sublabel {
+    font-size: 0.8em;
+    color: var(--text-light);
+    grid-column: 1 / 2;
+    margin-top: -5px;
+}
+
+.toggle-group-inactive {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* Estilos específicos para switches pequeños */
+.switch-small {
+    width: 35px;
+    height: 20px;
+    margin-left: 10px;
+    flex-shrink: 0;
+}
+.switch-small .slider-toggle {
+    border-radius: 10px;
+}
+.switch-small .slider-toggle:before {
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+}
+.switch-small input:checked + .slider-toggle:before {
+    transform: translateX(15px);
+}
+
+/* Colores de los switches */
+.toggle-yellow:checked { background-color: var(--color-privacy-orange); }
+.toggle-gray { background-color: #ccc; }
+
+
+.btn-revoke-consent {
+    background-color: var(--color-privacy-orange);
+    color: var(--color-white);
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background-color 0.2s;
+    margin-top: auto;
+}
+
+.btn-revoke-consent:hover { background-color: #b46b05; }
+
+
+/* --- Tarjeta 3: Historial Automático --- */
+.radio-group-privacy {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.radio-label {
+    font-size: 0.95em;
+    color: var(--text-dark);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.radio-label input[type="radio"] {
+    /* Ocultar el radio nativo y usar estilos personalizados si es necesario */
+    margin-right: 10px;
+    accent-color: var(--color-privacy-red); /* Color de acento para el radio */
+}
+
+.btn-save-config {
+    background-color: var(--color-privacy-blue);
+    color: var(--color-white);
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background-color 0.2s;
+    margin-top: auto;
+}
+
+.btn-save-config:hover { background-color: #3b82f6; }
+
+
+/* --- Tarjeta 4: Exportar Datos --- */
+.export-checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+    font-size: 0.95em;
+    color: var(--text-dark);
+    padding: 15px 0;
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.export-checklist div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+}
+
+.export-checklist .fa-check {
+    color: var(--color-privacy-green);
+    font-size: 1.1em;
+}
+
+.btn-export-data {
+    background-color: var(--color-privacy-green);
+    color: var(--color-white);
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background-color 0.2s;
+    margin-top: auto;
+}
+
+.btn-export-data:hover { background-color: #0d9488; }
+
+/* ==================================== */
+/* 13. PÁGINA DE ALERTAS Y NOTIFICACIONES */
+/* ==================================== */
+
+/* Colores Específicos de Alerta */
+:root {
+    --alert-color-critical: #ef4444; /* Rojo - Usar red-trend */
+    --alert-color-high: #f59e0b;     /* Amarillo/Naranja - Usar color-media */
+    --alert-color-medium: #42A5F5;   /* Azul - Usar color-blue-info */
+    --alert-color-low: #10b981;      /* Verde - Usar color-normal */
+    --alert-bg-critical: #fee2e2;    /* Fondo Rojo Claro */
+    --alert-bg-high: #fff7e6;        /* Fondo Naranja Claro */
+    --alert-bg-medium: #e0f2fe;      /* Fondo Azul Claro */
+    --alert-bg-low: #e6ffe6;         /* Fondo Verde Claro */
+}
+
+.page-alerts-content {
+    padding-top: 10px;
+}
+
+/* Header principal de la página */
+.alerts-main-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.alerts-main-header h2 {
+    font-size: 1.6em;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.alerts-main-header p {
+    font-size: 0.9em;
+    color: var(--text-light);
+}
+
+.alerts-main-header .icon-red-alert {
+    font-size: 1.8em;
+    color: var(--alert-color-critical);
+}
+
+.btn-clear-alerts {
+    background-color: var(--color-blue-info);
+    color: var(--color-white);
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+    margin-left: auto;
+    font-size: 0.9em;
+}
+
+.btn-clear-alerts:hover { background-color: #3b82f6; }
+
+/* Rejilla de Alertas (Una sola columna) */
+.alerts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+/* Estilo Base de la Tarjeta de Alerta */
+.alert-card {
+    background-color: var(--color-white);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    border-left: 5px solid; /* Usado para indicar la prioridad */
+}
+
+/* Estilos de Prioridad (Color de Borde) */
+.alert-critical { border-left-color: var(--alert-color-critical); }
+.alert-high { border-left-color: var(--alert-color-high); }
+.alert-medium { border-left-color: var(--alert-color-medium); }
+.alert-low { border-left-color: var(--alert-color-low); }
+
+
+/* Iconos de Alerta */
+.alert-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    flex-shrink: 0;
+}
+
+.icon-critical { background-color: var(--alert-bg-critical); color: var(--alert-color-critical); }
+.icon-high { background-color: var(--alert-bg-high); color: var(--alert-color-high); }
+.icon-medium { background-color: var(--alert-bg-medium); color: var(--alert-color-medium); }
+.icon-low { background-color: var(--alert-bg-low); color: var(--alert-color-low); }
+
+
+/* Detalles de la Alerta */
+.alert-details {
+    flex-grow: 1;
+}
+
+.alert-title {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.alert-message {
+    font-size: 0.95em;
+    color: var(--text-dark);
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.alert-timestamp {
+    font-size: 0.8em;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+/* Botones de Acción */
+.alert-actions {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+    align-items: center;
+    padding-left: 20px;
+    border-left: 1px solid var(--border-light);
+}
+
+.btn-action-primary, .btn-action-secondary {
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.2s;
+}
+
+.btn-action-primary {
+    background-color: var(--color-blue-info);
+    color: var(--color-white);
+    border: none;
+}
+
+.btn-action-primary:hover { background-color: #3b82f6; }
+
+.btn-action-secondary {
+    background-color: var(--color-white);
+    color: var(--text-light);
+    border: 1px solid var(--border-light);
+}
+
+.btn-action-secondary:hover { background-color: var(--bg-light); }
+
+/* ==================================== */
+/* ESTILO BOTÓN SALIR */
+/* ==================================== */
+
+.main-nav li.logout-item {
+    margin-top: 10px; /* Un poco de separación del resto */
+    border-top: 1px solid var(--border-light); /* Una línea sutil divisoria */
+    padding-top: 15px;
+    padding-bottom: 15px; /* Ajuste de padding */
+    transition: all 0.2s ease;
+}
+
+.main-nav li.logout-item:hover {
+    background-color: #fee2e2; /* Fondo rojo muy suave */
+    color: #ef4444; /* Texto e icono rojo */
+    font-weight: 600;
+}
